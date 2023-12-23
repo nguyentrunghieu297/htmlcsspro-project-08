@@ -26,14 +26,6 @@
     @include abstracts.breakpoint(lg) {
         padding: 20px 0;
     }
-
-    &__more {
-        display: none;
-
-        @include abstracts.breakpoint(lg) {
-            display: block;
-        }
-    }
 }
 
 .navbar {
@@ -44,12 +36,71 @@
     }
 
     @include abstracts.breakpoint(lg) {
+        position: fixed;
+        z-index: 9;
+        inset: 0 50% 0 0;
+        margin-left: 0;
+        padding: 20px 0;
+        background-color: var(--sidebar-bg);
+
+        border-radius: 0px 20px 20px 0px;
+
+        translate: -100%;
+        transition: translate 0.5s;
+
+        &.show {
+            translate: 0;
+            box-shadow: 0px 40px 90px 20px var(--dropdown-shadow-color);
+        }
+
+        &.show ~ &__overlay {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    @include abstracts.breakpoint(sm) {
+        inset: 0 20% 0 0;
+    }
+
+    &__close-btn {
         display: none;
+
+        @include abstracts.breakpoint(lg) {
+            display: block;
+            padding: 10px 40px;
+        }
+
+        @include abstracts.breakpoint(sm) {
+            padding: 0px 20px 10px;
+        }
+    }
+
+    &__overlay {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.5s, opacity 0.5s;
+
+        @include abstracts.breakpoint(lg) {
+            position: fixed;
+            inset: 0;
+            z-index: 8;
+            background-color: rgba($color: #000000, $alpha: 0.4);
+        }
     }
 
     &__list {
-        display: flex;
-        // gap: 30px;
+        @extend %flexItemsCenter;
+        @include abstracts.breakpoint(lg) {
+            flex-direction: column;
+            align-items: flex-start;
+            overflow-y: auto;
+            height: calc(100% - 40px);
+        }
+
+        @include abstracts.breakpoint(md) {
+            height: calc(100% - 125px);
+        }
     }
 
     &__link {
@@ -60,16 +111,48 @@
         font-size: 1.5rem;
         font-weight: 500;
         line-height: 1.467;
+
+        @include abstracts.breakpoint(lg) {
+            padding: 0 40px;
+            justify-content: space-between;
+            font-size: 1.6rem;
+            line-height: 150%; /* 150% */
+        }
+
+        @include abstracts.breakpoint(sm) {
+            height: 44px;
+            padding: 0 20px;
+        }
     }
 
     &__item {
         &:hover .dropdown {
             display: block;
         }
+
+        @include abstracts.breakpoint(lg) {
+            width: 100%;
+
+            &:hover .dropdown {
+                display: none;
+            }
+
+            &--active .dropdown {
+                display: block !important;
+            }
+        }
     }
 
     &__arrow {
         margin-top: 5px;
+        transition: rotate 0.25s;
+        @include abstracts.breakpoint(lg) {
+            rotate: -90deg;
+        }
+    }
+
+    &__item--active &__arrow {
+        rotate: 0deg;
     }
 }
 
@@ -89,10 +172,6 @@
         border-radius: 8px;
         background: var(--top-act-group-bg-color);
         box-shadow: 0px 20px 60px 10px var(--top-act-group-shadow);
-
-        @include abstracts.breakpoint(md) {
-            display: none;
-        }
     }
 
     &__group--single {
@@ -130,5 +209,31 @@
         height: 50px;
         border-radius: 8px;
         cursor: pointer;
+    }
+}
+
+.nav-btn {
+    height: 50px;
+    align-items: center;
+    padding: 0 40px;
+
+    @include abstracts.breakpoint(sm) {
+        height: 44px;
+        padding: 0 20px;
+    }
+
+    &__title,
+    &__qnt {
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 2.2rem; /* 146.667% */
+    }
+
+    &__title {
+        margin-left: 16px;
+    }
+
+    &__qnt {
+        margin-left: auto;
     }
 }

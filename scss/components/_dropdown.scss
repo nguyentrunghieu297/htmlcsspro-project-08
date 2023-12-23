@@ -7,6 +7,11 @@
     padding-top: 54px;
     display: none;
 
+    @include abstracts.breakpoint(lg) {
+        padding-top: 0;
+        position: static;
+    }
+
     &__inner {
         --inner-padding: 30px;
 
@@ -24,6 +29,22 @@
             transform: translateX(-50%);
             filter: var(--dropdown-arrow-color);
         }
+
+        @include abstracts.breakpoint(lg) {
+            padding: 0 40px;
+
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+
+            &::before {
+                content: none;
+            }
+        }
+
+        @include abstracts.breakpoint(sm) {
+            padding: 0 20px;
+        }
     }
 }
 
@@ -38,6 +59,12 @@
         // border-right: 1px solid var(--top-menu-border-color);
         box-shadow: 1px 0 0 var(--top-menu-border-color);
         overflow-y: auto;
+
+        @include abstracts.breakpoint(lg) {
+            width: 100%;
+            height: auto;
+            box-shadow: none;
+        }
     }
 }
 
@@ -49,6 +76,10 @@
         margin-top: 20px;
     }
 
+    @include abstracts.breakpoint(lg) {
+        margin-top: 12px;
+    }
+
     &__icon {
         position: relative;
         flex-shrink: 0;
@@ -57,6 +88,10 @@
 
         @include abstracts.breakpoint(xl) {
             display: none;
+        }
+
+        @include abstracts.breakpoint(lg) {
+            display: block;
         }
     }
 
@@ -81,7 +116,7 @@
     }
 
     &__heading {
-        margin-top: 4px;
+        margin: 4px 0 24px;
         font-size: 1.6rem;
         font-weight: 500;
         line-height: 150%;
@@ -89,6 +124,10 @@
 
     &__list {
         margin-top: 19px;
+
+        @include abstracts.breakpoint(lg) {
+            margin-top: 0;
+        }
     }
 
     &__item {
@@ -123,6 +162,12 @@
 
     overflow-y: auto;
 
+    @include abstracts.breakpoint(lg) {
+        padding-left: 0;
+        position: initial;
+        grid-template-columns: 1fr;
+    }
+
     &--not-main {
         padding-left: 0;
         height: var(--max-inner-height);
@@ -130,5 +175,10 @@
         inset: initial;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+
+        @include abstracts.breakpoint(lg) {
+            grid-template-columns: 1fr;
+            height: auto;
+        }
     }
 }
