@@ -169,9 +169,12 @@ button,
 input,
 textarea,
 select {
+  padding: 0;
   font-family: inherit;
   color: inherit;
   -webkit-tap-highlight-color: transparent;
+  outline: none;
+  border: none;
 }
 
 .icon {
@@ -1327,6 +1330,9 @@ html {
   --like-btn-shadow: rgba(124, 124, 124, 0.2);
   --product-card-bg: #fff;
   --product-card-shadow: rgba(237, 237, 246, 0.2);
+  --filter-form-bg: #fff;
+  --filter-form-shadow: rgba(200, 200, 200, 0.4);
+  --filter-form-tag-bg: #f8f8fb;
 }
 @media (max-width: 991.98px) {
   html {
@@ -1999,6 +2005,43 @@ html.dark {
   margin-top: 8px;
 }
 
+.btn {
+  height: 46px;
+  padding: 0 20px;
+  background-color: #f8f8fb;
+  border-radius: 10px;
+  user-select: none;
+  color: #1a162e;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+.btn + .btn {
+  margin-left: 20px;
+}
+.btn--text {
+  background-color: transparent;
+  color: #9e9da8;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.btn--primary {
+  background: #ffb700;
+}
+.btn--outline {
+  background-color: transparent;
+  border: 1px solid #d2d1d6;
+}
+.btn--rounded {
+  border-radius: 99px;
+}
+.btn[disabled], .btn--disable {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.btn:hover {
+  opacity: 0.8;
+}
+
 .product-card {
   padding: 16px;
   border-radius: 20px;
@@ -2044,6 +2087,170 @@ html.dark {
 .product-card__star {
   margin: 0 6px 0 auto;
 }
+.filter-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.filter {
+  border-radius: 20px;
+  position: absolute;
+  padding: 30px;
+  right: 0;
+  top: 55px;
+  background-color: var(--filter-form-bg);
+  filter: drop-shadow(0px 40px 90px var(--filter-form-shadow));
+}
+.filter__arrow {
+  width: 21px;
+  top: -8px;
+  right: 35px;
+  position: absolute;
+}
+.filter__heading {
+  font-size: 2.2rem;
+  font-weight: 500;
+  line-height: 145.455%; /* 145.455% */
+}
+.filter__form {
+  margin-top: 30px;
+}
+.filter__form-label {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 500;
+  line-height: 145.455%; /* 145.455% */
+}
+.filter__form-label--small {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 142.857%;
+}
+.filter__form-group {
+  margin-top: 30px;
+}
+.filter__form-group--inline {
+  display: flex;
+  gap: 30px;
+}
+.filter__form-text-input {
+  padding: 0 16px;
+  height: 44px;
+  width: 334px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.filter__form-text-input--small {
+  padding: 0 12px;
+  width: 121px;
+  height: 36px;
+}
+.filter__form-text-input--small .filter__form-input {
+  font-size: 1.4rem;
+}
+.filter__form-input {
+  width: 100%;
+  color: var(--Secondary-Color-Secondary-1, #1a162e);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 146.667%;
+}
+.filter__form-input::placeholder {
+  color: #9e9da8;
+  font-weight: 400;
+}
+.filter__form-input-icon {
+  margin-left: 12px;
+}
+.filter__form-select-wrap, .filter__form-text-input {
+  border-radius: 6px;
+  border: 1px solid #d2d1d6;
+}
+.filter__form-slider {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: #d2d1d6;
+}
+.filter__form-slider::before, .filter__form-slider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--filter-form-bg);
+  border: 6px solid #ffb700;
+}
+.filter__form-slider::before {
+  left: var(--min-value);
+}
+.filter__form-slider::after {
+  left: var(--max-value);
+}
+.filter__form-select-wrap {
+  height: 45px;
+  display: flex;
+  align-items: center;
+}
+.filter__form-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: var(--width, --108px);
+  padding: 0 14px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 142.857%;
+  cursor: pointer;
+}
+.filter__form-select + .filter__form-select {
+  border-left: 1px solid #d2d1d6;
+}
+.filter__form-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+.filter__form-tag {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: var(--filter-form-tag-bg);
+  color: #9e9da8;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 142.857%;
+  transition: color 0.2s;
+}
+.filter__form-tag:hover {
+  color: var(--text-color);
+}
+.filter__row {
+  display: flex;
+}
+.filter__separate {
+  margin: 0 30px;
+  width: 1px;
+  background-color: #eee;
+}
+.filter__footer {
+  justify-content: flex-end;
+  margin-top: 32px;
+}
+.filter__cancel, .filter__submit {
+  width: 107px;
+  padding: 0 10px;
+}
+.filter__cancel {
+  font-size: 1.5rem;
+}
+.filter__submit {
+  font-size: 1.4rem;
+}
+
 .home__container {
   margin-top: 40px;
 }
