@@ -3,3 +3,8 @@
 @use "./layout";
 @use "./components";
 @use "./pages";
+
+.header {
+    position: relative;
+    z-index: 2;
+}

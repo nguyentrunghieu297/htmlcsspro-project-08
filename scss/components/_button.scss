@@ -45,7 +45,6 @@
     border-radius: 10px;
     user-select: none;
 
-    color: #1a162e;
     font-size: 1.8rem;
     font-weight: 500;
 
@@ -62,6 +61,7 @@
     }
 
     &--primary {
+        color: #1a162e;
         background: #ffb700;
     }
 

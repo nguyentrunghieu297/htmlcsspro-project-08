@@ -1,3 +1,5 @@
+@use "../abstracts";
+
 .filter-wrap {
     position: relative;
     z-index: 1;
@@ -11,12 +13,32 @@
     top: 55px;
     background-color: var(--filter-form-bg);
     filter: drop-shadow(0px 40px 90px var(--filter-form-shadow));
+    transition: opacity, visibility;
+    transition-duration: 0.25s;
+
+    @include abstracts.screen(xl) {
+        height: calc(100vh - 300px);
+        overflow-y: auto;
+        padding-bottom: 0;
+        overscroll-behavior: contain;
+    }
+
+    @include abstracts.screen(sm) {
+        width: 90vw;
+        height: calc(100vh - 100px);
+    }
+
+    &.hide {
+        opacity: 0;
+        visibility: hidden;
+    }
 
     &__arrow {
         width: 21px;
         top: -8px;
         right: 35px;
         position: absolute;
+        filter: var(--filter-form-arrow);
     }
 
     &__heading {
@@ -64,6 +86,10 @@
                 width: 121px;
                 height: 36px;
             }
+
+            @include abstracts.screen(sm) {
+                width: 100%;
+            }
         }
 
         &-text-input--small &-input {
@@ -72,8 +98,6 @@
 
         &-input {
             width: 100%;
-
-            color: var(--Secondary-Color-Secondary-1, #1a162e);
             font-size: 1.5rem;
             font-weight: 500;
             line-height: 146.667%;
@@ -177,17 +201,34 @@
         margin: 0 30px;
         width: 1px;
         background-color: #eee;
+
+        @include abstracts.screen(xl) {
+            width: 100%;
+            height: 2px;
+            margin: 30px 0;
+        }
     }
 
     &__footer {
         justify-content: flex-end;
         margin-top: 32px;
+
+        @include abstracts.screen(xl) {
+            position: sticky;
+            bottom: 0;
+            background-color: var(--filter-form-bg);
+            padding: 20px 0;
+        }
     }
 
     &__cancel,
     &__submit {
         width: 107px;
         padding: 0 10px;
+
+        @include abstracts.screen(sm) {
+            flex: 1;
+        }
     }
 
     &__cancel {
@@ -196,5 +237,11 @@
 
     &__submit {
         font-size: 1.4rem;
+    }
+
+    &__content {
+        @include abstracts.screen(xl) {
+            flex-direction: column;
+        }
     }
 }
