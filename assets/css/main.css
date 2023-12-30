@@ -1650,6 +1650,7 @@ html.dark {
   font-weight: 400;
 }
 .footer__bottom {
+  margin-top: 50px;
   display: flex;
   justify-content: space-between;
 }
