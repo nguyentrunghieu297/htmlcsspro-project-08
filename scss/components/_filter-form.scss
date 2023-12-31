@@ -8,7 +8,7 @@
 .filter {
     border-radius: 20px;
     position: absolute;
-    padding: 30px;
+    padding: 30px 0;
     right: 0;
     top: 55px;
     background-color: var(--filter-form-bg);
@@ -16,16 +16,12 @@
     transition: opacity, visibility;
     transition-duration: 0.25s;
 
-    @include abstracts.screen(xl) {
-        height: calc(100vh - 300px);
-        overflow-y: auto;
-        padding-bottom: 0;
-        overscroll-behavior: contain;
-    }
-
     @include abstracts.screen(sm) {
-        width: 90vw;
-        height: calc(100vh - 100px);
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        inset: 0;
+        border-radius: 0;
     }
 
     &.hide {
@@ -42,6 +38,7 @@
     }
 
     &__heading {
+        padding: 0 30px;
         font-size: 2.2rem;
         font-weight: 500;
         line-height: 145.455%; /* 145.455% */
@@ -68,7 +65,8 @@
             margin-top: 30px;
 
             &--inline {
-                display: flex;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
                 gap: 30px;
             }
         }
@@ -85,6 +83,10 @@
                 padding: 0 12px;
                 width: 121px;
                 height: 36px;
+
+                @include abstracts.screen(xl) {
+                    width: 100%;
+                }
             }
 
             @include abstracts.screen(sm) {
@@ -109,6 +111,10 @@
 
             &-icon {
                 margin-left: 12px;
+            }
+
+            @include abstracts.screen(sm) {
+                font-size: 1.6rem;
             }
         }
 
@@ -164,7 +170,11 @@
             font-weight: 500;
             line-height: 142.857%;
             cursor: pointer;
+            @include abstracts.screen(xl) {
+                flex: 1;
+            }
         }
+
         &-select + &-select {
             border-left: 1px solid #d2d1d6;
         }
@@ -173,6 +183,10 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px 20px;
+
+            @include abstracts.screen(sm) {
+                gap: 10px;
+            }
         }
 
         &-tag {
@@ -210,14 +224,15 @@
     }
 
     &__footer {
+        padding: 0 30px;
         justify-content: flex-end;
         margin-top: 32px;
 
-        @include abstracts.screen(xl) {
+        @include abstracts.screen(sm) {
+            padding-top: 20px;
             position: sticky;
-            bottom: 0;
+            bottom: 20px;
             background-color: var(--filter-form-bg);
-            padding: 20px 0;
         }
     }
 
@@ -227,6 +242,7 @@
         padding: 0 10px;
 
         @include abstracts.screen(sm) {
+            height: 42px;
             flex: 1;
         }
     }
@@ -240,8 +256,17 @@
     }
 
     &__content {
+        padding: 0 30px;
+        max-height: calc(100vh - 350px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
         @include abstracts.screen(xl) {
             flex-direction: column;
+        }
+
+        @include abstracts.screen(sm) {
+            max-height: calc(100vh - 200px);
         }
     }
 }
