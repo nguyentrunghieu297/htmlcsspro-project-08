@@ -8,9 +8,20 @@
         }
     }
 
-    &__group:has(:invalid) &__text-input {
-        border-color: red;
-        background-color: rgba($color: red, $alpha: 0.1);
+    &__group:has(:invalid):has(&__input:not(:placeholder-shown)) {
+        .form__text-input {
+            border-color: red;
+            background-color: rgba($color: red, $alpha: 0.1);
+        }
+
+        .form__input-icon-error,
+        .form__error {
+            display: block;
+        }
+
+        .form__input-icon {
+            display: none;
+        }
     }
 
     &__error {
@@ -19,6 +30,12 @@
         font-weight: 500;
         text-align-last: left;
         color: red;
+
+        display: none;
+    }
+
+    &__input-icon-error {
+        display: none;
     }
 
     &__text-input {

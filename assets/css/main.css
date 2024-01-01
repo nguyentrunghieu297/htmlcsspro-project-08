@@ -2594,9 +2594,16 @@ html.dark {
   display: flex;
   align-items: center;
 }
-.form__group:has(:invalid) .form__text-input {
+.form__group:has(:invalid):has(.form__input:not(:placeholder-shown)) .form__text-input {
   border-color: red;
   background-color: rgba(255, 0, 0, 0.1);
+}
+.form__group:has(:invalid):has(.form__input:not(:placeholder-shown)) .form__input-icon-error,
+.form__group:has(:invalid):has(.form__input:not(:placeholder-shown)) .form__error {
+  display: block;
+}
+.form__group:has(:invalid):has(.form__input:not(:placeholder-shown)) .form__input-icon {
+  display: none;
 }
 .form__error {
   margin: 10px 0 0 10px;
@@ -2604,6 +2611,10 @@ html.dark {
   font-weight: 500;
   text-align-last: left;
   color: red;
+  display: none;
+}
+.form__input-icon-error {
+  display: none;
 }
 .form__text-input {
   display: flex;
