@@ -2,6 +2,7 @@
 
 .footer {
     padding: 50px 0;
+    font-size: 1.4rem;
     background: var(--footer-bg-color);
 
     @include abstracts.screen(md) {
@@ -99,7 +100,6 @@
 
     &__desc,
     &__help-text {
-        font-size: 14px;
         line-height: 180%;
     }
 
@@ -127,8 +127,17 @@
         border-radius: 6px;
         font-size: 1.5rem;
         font-weight: 500;
+
         @include abstracts.screen(lg) {
             width: 50%;
+        }
+
+        @include abstracts.screen(md) {
+            font-size: 1.6rem;
+        }
+
+        @include abstracts.screen(sm) {
+            flex: 1;
         }
 
         &::placeholder {
@@ -156,7 +165,6 @@
     &__link {
         padding: 8px 0;
         display: inline-block;
-        font-size: 1.4rem;
         line-height: 1.4;
         text-align: left;
 
@@ -167,7 +175,6 @@
 
     &__label {
         margin-top: 20px;
-        font-size: 1.4rem;
         line-height: 1.4;
         font-weight: 500;
     }
@@ -186,7 +193,6 @@
     }
 
     &__copyright {
-        font-size: 1.4rem;
         line-height: 2.2;
 
         @include abstracts.screen(md) {
@@ -211,6 +217,11 @@
         filter: grayscale(50%);
         transition: translate, filter;
         transition-duration: 0.3s;
+
+        @include abstracts.screen(sm) {
+            width: 42px;
+            height: 42px;
+        }
 
         &--ytb {
             background: #f00;
@@ -242,5 +253,10 @@
         width: 14px;
         filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7482%) hue-rotate(72deg) brightness(99%)
             contrast(99%);
+
+        @include abstracts.screen(sm) {
+            width: 18px;
+            height: 18px;
+        }
     }
 }
