@@ -1363,6 +1363,11 @@ html {
     --cate-item-bg: #fff;
   }
 }
+@media (max-width: 767.98px) {
+  html {
+    --auth-intro-bg:: #fff;
+  }
+}
 
 html.dark {
   --text-color: #fff;
@@ -2610,6 +2615,11 @@ html.dark {
   display: flex;
   align-items: center;
 }
+@media (max-width: 767.98px) {
+  .form__group {
+    margin-top: 20px;
+  }
+}
 .form__group:has(:invalid):has(.form__input:not(:placeholder-shown)) .form__text-input {
   border-color: #ed4337;
   background-color: rgba(237, 67, 55, 0.1);
@@ -2771,6 +2781,7 @@ html.dark {
   align-items: center;
   flex-direction: column;
   gap: 50px;
+  background-color: var(--auth-intro-bg);
 }
 .auth__intro-img {
   max-width: 100%;
@@ -2822,6 +2833,11 @@ html.dark {
   margin: 0 auto;
   padding: 50px 0;
 }
+@media (max-width: 767.98px) {
+  .auth__content-inner {
+    padding: 30px 0;
+  }
+}
 .auth__heading {
   margin-top: 50px;
   font-size: 3rem;
@@ -2831,6 +2847,7 @@ html.dark {
 @media (max-width: 767.98px) {
   .auth__heading {
     font-size: 2.2rem;
+    margin-top: 30px;
   }
 }
 .auth__desc {
@@ -2872,6 +2889,12 @@ html.dark {
   gap: 30px;
   margin-top: 50px;
 }
+@media (max-width: 767.98px) {
+  .auth__btn-group {
+    margin-top: 35px;
+    gap: 20px;
+  }
+}
 .auth__btn {
   width: 100%;
 }
@@ -2887,6 +2910,7 @@ html.dark {
 @media (max-width: 767.98px) {
   .auth__text {
     font-size: 1.6rem;
+    margin-top: 35px;
   }
 }
 .auth__text-link {

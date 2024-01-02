@@ -22,6 +22,8 @@
         flex-direction: column;
         gap: 50px;
 
+        background-color: var(--auth-intro-bg);
+
         &-img {
             max-width: 100%;
         }
@@ -80,6 +82,10 @@
             width: min(460px, 100%);
             margin: 0 auto;
             padding: 50px 0;
+
+            @include abstracts.screen(md) {
+                padding: 30px 0;
+            }
         }
     }
 
@@ -91,6 +97,7 @@
 
         @include abstracts.screen(md) {
             font-size: 2.2rem;
+            margin-top: 30px;
         }
     }
 
@@ -132,6 +139,11 @@
         flex-direction: column;
         gap: 30px;
         margin-top: 50px;
+
+        @include abstracts.screen(md) {
+            margin-top: 35px;
+            gap: 20px;
+        }
     }
 
     &__btn {
@@ -150,6 +162,7 @@
 
         @include abstracts.screen(md) {
             font-size: 1.6rem;
+            margin-top: 35px;
         }
 
         &-link {
